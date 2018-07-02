@@ -1,24 +1,11 @@
 import React, { Component } from "react";
 import {
-  Alert,
   AppRegistry,
-  Platform,
-  StyleSheet,
-  Text,
-  TouchableHighlight,
-  TouchableOpacity,
-  TouchableNativeFeedback,
-  TouchableWithoutFeedback,
   View
 } from "react-native";
 import PedMap from "./app/components/PedMap";
 import Main from "./app/components/Main";
-import { createStackNavigator } from "react-navigation";
 
-// const Nav = createStackNavigator({
-//   Home: { screen: HomeScreen },
-//   Map: { screen: MapScreen },
-// });
 
 export default class Safewalk extends Component<Props> {
   constructor() {

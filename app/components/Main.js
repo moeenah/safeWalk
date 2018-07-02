@@ -16,14 +16,13 @@ export default class Main extends Component {
   constructor(props) {
 
     super(props);
-    this._onPressButton = this._onPressButton.bind(this)
     this.state = {
       page: this.props.page
     };
   }
 
  _onPressButton() {
-  console.log("it has indeed been pressed");
+  
   this.props.changePage(1)
   console.log(this.props.page)
   }
@@ -35,7 +34,7 @@ export default class Main extends Component {
   render() {
     return (
       <View>
-        <TouchableHighlight onPress={this._onPressButton} underlayColor="white">
+        <TouchableHighlight onPress={this._onPressButton.bind(this)} underlayColor="white">
           <View style={styles.button}>
             <Text style={styles.buttonText}>Maps</Text>
           </View>
