@@ -28,9 +28,13 @@ export default class PedMap extends Component {
     message: "Hi there"
   };
 
+  componentDidMount(){
+    
+  }
+
   render() {
     return (
-      <View>
+      <View style={styles.container}>
         <MapView
           style={styles.map}
           initialRegion={{
@@ -39,6 +43,8 @@ export default class PedMap extends Component {
             latitudeDelta: 0.0222,
             longitudeDelta: 0.0121
           }}
+          showsUserLocation={true}
+          showsMyLocationButton={true}
           customMapStyle={mapStyle}
         >
           <MapView.Marker
@@ -63,18 +69,41 @@ export default class PedMap extends Component {
             </MapView.Marker>
           ))}
         </MapView>
-        <TouchableHighlight
-          onPress={this._onPressButton.bind(this)}
-          underlayColor="white"
-        >
-          <View style={styles.button}>
-            <Text style={styles.buttonText}>Home</Text>
-          </View>
-        </TouchableHighlight>
+        <View style={styles.btncontainer}>
+          <TouchableHighlight
+            onPress={this._onPressButton.bind(this)}
+            underlayColor="white"
+          >
+            <View style={styles.button}>
+              <Text style={styles.buttonText}>Home</Text>
+            </View>
+          </TouchableHighlight>
+        </View>
       </View>
     );
   }
 }
+
+const mapStyle = [
+  {
+    featureType: "poi.business",
+    stylers: [
+      {
+        visibility: "off"
+      }
+    ]
+  },
+  {
+    featureType: "poi.park",
+    elementType: "labels.text",
+    stylers: [
+      {
+        visibility: "off"
+      }
+    ]
+  }
+];
+
 const decide = amount => {
   if (amount === 2) {
     return styles.low;
@@ -92,16 +121,25 @@ const decide = amount => {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    height: "100%",
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: "white"
+  },
+  map: {
+    height: "100%",
+    width: "100%"
+  },
+  btncontainer: {
+    position: "absolute",
+    bottom: 0
   },
   button: {
     alignItems: "center",
     backgroundColor: "#2196F3",
     borderRadius: 10,
-    margin: 20
+    margin: 20,
+    zIndex: 1
   },
   buttonText: {
     padding: 20,
@@ -173,34 +211,7 @@ const styles = StyleSheet.create({
     borderColor: "rgba(255, 0, 0, 0.3)",
     alignItems: "center",
     justifyContent: "center"
-  },
-  map: {
-    left: 0,
-    right: 0,
-    top: 0,
-    bottom: 0,
-    position: "absolute"
   }
 });
-
-const mapStyle = [
-  {
-    featureType: "poi.business",
-    stylers: [
-      {
-        visibility: "off"
-      }
-    ]
-  },
-  {
-    featureType: "poi.park",
-    elementType: "labels.text",
-    stylers: [
-      {
-        visibility: "off"
-      }
-    ]
-  }
-];
 
 AppRegistry.registerComponent("PedMap", () => PedMap);
