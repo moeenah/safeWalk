@@ -1,11 +1,7 @@
 import React, { Component } from "react";
-import {
-  AppRegistry,
-  View
-} from "react-native";
+import { AppRegistry, View } from "react-native";
 import PedMap from "./app/components/PedMap";
 import Main from "./app/components/Main";
-
 
 export default class Safewalk extends Component<Props> {
   constructor() {
@@ -16,11 +12,11 @@ export default class Safewalk extends Component<Props> {
     };
   }
 
-  currentPage(){
-    if (this.state.page === 1){
-      return <PedMap page={this.state.page} changePage={this.changePage}/>
+  currentPage() {
+    if (this.state.page === 1) {
+      return <PedMap page={this.state.page} changePage={this.changePage} />;
     }
-    return <Main page={this.state.page} changePage={this.changePage}/>
+    return <Main page={this.state.page} changePage={this.changePage} />;
   }
 
   changePage(newpage) {
@@ -28,11 +24,7 @@ export default class Safewalk extends Component<Props> {
   }
 
   render() {
-    return (
-      <View>
-          {this.currentPage()}       
-      </View>
-    );
+    return <View>{this.currentPage()}</View>;
   }
 }
 
