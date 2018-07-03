@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, DeviceEventEmitter } from "react";
 import {
   AppRegistry,
   StyleSheet,
@@ -7,15 +7,15 @@ import {
   View
 } from "react-native";
 import MapView from "react-native-maps";
-import Coords from "../../sample";
+import Marker from "./Marker";
 
 export default class PedMap extends Component {
   constructor(props) {
     super(props);
     this.state = {
       page: this.props.page,
-      lat: 51.0486,
-      long: -114.0708
+      lat: 51.05321,
+      long: -114.09524
     };
   }
 
@@ -40,14 +40,14 @@ export default class PedMap extends Component {
           initialRegion={{
             latitude: this.state.lat,
             longitude: this.state.long,
-            latitudeDelta: 0.0222,
+            latitudeDelta: 0.0422,
             longitudeDelta: 0.0121
           }}
           showsUserLocation={true}
           showsMyLocationButton={true}
           customMapStyle={mapStyle}
         >
-          <MapView.Marker
+        <MapView.Marker
             coordinate={{
               latitude: this.state.lat,
               longitude: this.state.long
@@ -55,19 +55,8 @@ export default class PedMap extends Component {
           >
             <View style={styles.myloc} />
           </MapView.Marker>
-          {Coords.map(marker => (
-            <MapView.Marker
-              key={marker.key}
-              coordinate={{
-                latitude: Number(marker.latitude),
-                longitude: Number(marker.longitude)
-              }}
-            >
-              <View style={styles.radius}>
-                <View style={decide(marker.amount)} />
-              </View>
-            </MapView.Marker>
-          ))}
+          <Marker/>
+
         </MapView>
         <View style={styles.btncontainer}>
           <TouchableHighlight
@@ -75,7 +64,7 @@ export default class PedMap extends Component {
             underlayColor="white"
           >
             <View style={styles.button}>
-              <Text style={styles.buttonText}>Home</Text>
+              <Text style={styles.buttonText}>Go Back</Text>
             </View>
           </TouchableHighlight>
         </View>
@@ -104,20 +93,6 @@ const mapStyle = [
   }
 ];
 
-const decide = amount => {
-  if (amount === 2) {
-    return styles.low;
-  }
-  if (amount > 2 && amount <= 4) {
-    return styles.mid;
-  }
-  if (amount === 5) {
-    return styles.high;
-  }
-  if (amount >= 6) {
-    return styles.dangerous;
-  }
-};
 
 const styles = StyleSheet.create({
   container: {
@@ -132,13 +107,14 @@ const styles = StyleSheet.create({
   },
   btncontainer: {
     position: "absolute",
-    bottom: 0
+    bottom: 0,
+    width:'60%'
   },
   button: {
     alignItems: "center",
     backgroundColor: "#2196F3",
     borderRadius: 10,
-    margin: 20,
+    marginBottom: 15,
     zIndex: 1
   },
   buttonText: {
@@ -154,61 +130,6 @@ const styles = StyleSheet.create({
     backgroundColor: "rgba(16, 187, 240, 0.3)",
     borderWidth: 2,
     borderColor: "rgba(16, 187, 240, 0.7)",
-    alignItems: "center",
-    justifyContent: "center"
-  },
-  radius: {
-    height: 50,
-    width: 50,
-    borderRadius: 50 / 2,
-    overflow: "hidden",
-    backgroundColor: "rgba(255, 217, 0, 0.1)",
-    borderWidth: 8,
-    borderColor: "rgba(255, 217, 0, 0.05)",
-    alignItems: "center",
-    justifyContent: "center"
-  },
-  low: {
-    height: 15,
-    width: 15,
-    borderRadius: 15 / 2,
-    overflow: "hidden",
-    backgroundColor: "rgba(255, 136, 0, 0.3)",
-    borderWidth: 4,
-    borderColor: "rgba(255, 136, 0, 0.1)",
-    alignItems: "center",
-    justifyContent: "center"
-  },
-  mid: {
-    height: 25,
-    width: 25,
-    borderRadius: 25 / 2,
-    overflow: "hidden",
-    backgroundColor: "rgba(255, 136, 0, 0.3)",
-    borderWidth: 8,
-    borderColor: "rgba(255, 136, 0, 0.1)",
-    alignItems: "center",
-    justifyContent: "center"
-  },
-  high: {
-    height: 30,
-    width: 30,
-    borderRadius: 30 / 2,
-    overflow: "hidden",
-    backgroundColor: "rgba(255, 38, 0, 0.4)",
-    borderWidth: 7,
-    borderColor: "rgba(255, 38, 0, 0.2)",
-    alignItems: "center",
-    justifyContent: "center"
-  },
-  dangerous: {
-    height: 30,
-    width: 30,
-    borderRadius: 30 / 2,
-    overflow: "hidden",
-    backgroundColor: "rgba(255, 0, 0, 0.5)",
-    borderWidth: 4,
-    borderColor: "rgba(255, 0, 0, 0.3)",
     alignItems: "center",
     justifyContent: "center"
   }

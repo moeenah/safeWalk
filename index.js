@@ -8,7 +8,7 @@ export default class Safewalk extends Component<Props> {
     super();
     this.changePage = this.changePage.bind(this);
     this.state = {
-      page: 1
+      page: 0
     };
   }
 
