@@ -17,7 +17,9 @@ export default class Main extends Component {
 
     super(props);
     this.state = {
-      page: this.props.page
+      page: this.props.page,
+      lat: this.props.lat,
+      long: this.props.long
     };
   }
 

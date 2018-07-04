@@ -13,9 +13,20 @@ export default class PedMap extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      region: {
+        latitude: this.props.lat,
+        longitude: this.props.long,
+        latitudeDelta: 0.0422,
+        longitudeDelta: 0.0121
+      },
+      coordinate: {
+        latitude: this.props.lat,
+        longitude: this.props.long
+      },
       page: this.props.page,
-      lat: 51.05321,
-      long: -114.09524
+      lat: this.props.lat,
+      long: this.props.long,
+      error: null
     };
   }
 
@@ -27,36 +38,30 @@ export default class PedMap extends Component {
   static defaultProps = {
     message: "Hi there"
   };
+moveto(){
+  this.map.animateToRegion(this.state.region)
+}
 
-  componentDidMount(){
-    
+  componentDidMount() {
+
   }
+
+  componentWillUnmount() {}
 
   render() {
     return (
       <View style={styles.container}>
         <MapView
+          ref={node => {this.map = node}}
           style={styles.map}
-          initialRegion={{
-            latitude: this.state.lat,
-            longitude: this.state.long,
-            latitudeDelta: 0.0422,
-            longitudeDelta: 0.0121
-          }}
           showsUserLocation={true}
           showsMyLocationButton={true}
+          followsUserLocation={true}
+          region={this.state.region}
           customMapStyle={mapStyle}
+          onPress={ ()=> this.moveto()}
         >
-        <MapView.Marker
-            coordinate={{
-              latitude: this.state.lat,
-              longitude: this.state.long
-            }}
-          >
-            <View style={styles.myloc} />
-          </MapView.Marker>
-          <Marker/>
-
+          <Marker />
         </MapView>
         <View style={styles.btncontainer}>
           <TouchableHighlight
@@ -93,7 +98,6 @@ const mapStyle = [
   }
 ];
 
-
 const styles = StyleSheet.create({
   container: {
     height: "100%",
@@ -108,7 +112,7 @@ const styles = StyleSheet.create({
   btncontainer: {
     position: "absolute",
     bottom: 0,
-    width:'60%'
+    width: "60%"
   },
   button: {
     alignItems: "center",
