@@ -1,6 +1,12 @@
 module.exports = {
 Coords: [
   {
+    latitude: "51.054481",
+    longitude: "-114.099378",
+    amount: 4,
+    key: 2
+  },
+  {
     latitude: "50.9649760173953",
     longitude: "-114.071622300775",
     amount: 4,

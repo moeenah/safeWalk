@@ -24,7 +24,7 @@ export default class Main extends Component {
   }
 
  _onPressButton() {
-  
+
   this.props.changePage(1)
   console.log(this.props.page)
   }
@@ -38,7 +38,7 @@ export default class Main extends Component {
       <View>
         <TouchableHighlight onPress={this._onPressButton.bind(this)} underlayColor="white">
           <View style={styles.button}>
-            <Text style={styles.buttonText}>Maps</Text>
+            <Text style={styles.buttonText}>Mapssss</Text>
           </View>
         </TouchableHighlight>
       </View>
