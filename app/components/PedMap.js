@@ -52,6 +52,7 @@ moveto(){
     return (
       <View style={styles.container}>
         <MapView
+          provider={'google'}
           ref={node => {this.map = node}}
           style={styles.map}
           showsUserLocation={true}
