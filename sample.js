@@ -1,61 +1,79 @@
 const Coords = [
   {
-    latitude: "50.9649760173953",
-    longitude: "-114.071622300775",
+    latitude: "51.05316573",
+    longitude: "-114.09512884",
+    amount: 4,
+    key: 3
+  },
+  {
+    latitude: "51.0483122",
+    longitude: "-114.0848611",
+    amount: 4,
+    key: 1
+  },
+  {
+    latitude: "51.05316572",
+    longitude: "-114.09512884",
+    amount: 4,
+    key: 2
+  },
+  {
+    latitude: "51.05459516",
+    longitude: "-114.09627167",
     amount: 4,
     key: 4
   },
   {
-    latitude: "51.0527794185566",
-    longitude: "-113.970033228998",
+    latitude: "51.05458994",
+    longitude: "-114.09704747",
     amount: 5,
     key: 9
   },
   {
-    latitude: "50.9795191781962",
-    longitude: "-114.059938863157",
+    latitude: "51.0544606",
+    longitude: "-114.099377",
     amount: 3,
     key: 12
   },
   {
-    latitude: "50.9795147894707",
-    longitude: "-114.067956339057",
+    latitude: "51.05446562",
+    longitude: "-114.10078248",
     amount: 4,
     key: 16
   },
   {
-    latitude: "51.0526011901446",
-    longitude: "-113.976936657202",
+    latitude: "51.05445888",
+    longitude: "-114.10246691",
     amount: 6,
     key: 22
   },
   {
-    latitude: "51.1251436195837",
-    longitude: "-113.969988442765",
+    latitude: "51.05534609",
+    longitude: "-114.10247254",
     amount: 2,
     key: 24
   },
   {
-    latitude: "51.0221437668122",
-    longitude: "-114.141230234641",
+    latitude: "51.05761613",
+    longitude: "-114.10250473",
     amount: 3,
     key: 27
   },
   {
-    latitude: "51.0959742261807",
-    longitude: "-114.14130766887",
+    latitude: "51.05761188",
+    longitude: "-114.09938352",
     amount: 2,
     key: 29
   },
   {
-    latitude: "51.0595559006127",
-    longitude: "-113.975102300465",
+    latitude: "51.05748985",
+    longitude: "-114.09473257",
     amount: 2,
     key: 31
   },
   {
-    latitude: "51.0377589360528",
-    longitude: "-114.12364961286",
+    latitude: "51.05605899",
+    longitude: "-114.09478083",
     amount: 2,
     key: 33
   },
